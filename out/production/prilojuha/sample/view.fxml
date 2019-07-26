@@ -16,14 +16,13 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="300.0" prefHeight="500.0" prefWidth="800.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="300.0" prefHeight="600.0" prefWidth="800.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
       <MenuBar fx:id="menuBar" styleClass="menuBar" BorderPane.alignment="CENTER">
         <menus>
@@ -62,39 +61,33 @@
          <children>
             <HBox>
                <children>
-                  <Button fx:id="bttnStart" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" styleClass="default" text="Старт">
+                  <Button fx:id="bttnStart" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#startExchange" styleClass="default" text="Старт">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="bttnStop" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" styleClass="default" text="Стоп">
+                  <Button fx:id="bttnStop" contentDisplay="CENTER" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#stopExchange" styleClass="default" text="Стоп">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Label fx:id="labelInfo" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Номер COM порта:" textAlignment="JUSTIFY" textFill="WHITE">
+                  <Label fx:id="labelInfo" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Номер порта:" textAlignment="JUSTIFY" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="9.0" />
                      </HBox.margin>
                   </Label>
-                  <ChoiceBox prefWidth="150.0">
+                  <ChoiceBox id="portsChoiceBox" fx:id="portsChoiceBox" prefWidth="100.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </ChoiceBox>
-                  <TextField fx:id="textFieldCOMPortNumber" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="33.0" text="2">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="6.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <ToggleButton fx:id="bttnOpenPort" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openComPort" styleClass="default" text="Открыть порт" textAlignment="JUSTIFY">
+                     </HBox.margin></ChoiceBox>
+                  <ToggleButton fx:id="bttnOpenPort" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#openOrCloseCOMPort" styleClass="default" text="Открыть порт" textAlignment="JUSTIFY">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </ToggleButton>
                </children>
             </HBox>
-            <TabPane fx:id="tabPane" prefHeight="440.0" prefWidth="800.0" styleClass="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" prefHeight="542.0" prefWidth="800.0" styleClass="tabPane" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="tabGraphics" closable="false" text="Графики">
                      <content>
@@ -104,7 +97,7 @@
                                  <children>
                                     <HBox prefHeight="144.0" prefWidth="600.0">
                                        <children>
-                                          <BarChart prefHeight="150.0" prefWidth="172.0">
+                                          <BarChart fx:id="barCart" prefHeight="150.0" prefWidth="172.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -139,7 +132,7 @@
                                           </LineChart>
                                        </children>
                                     </HBox>
-                                    <HBox prefHeight="202.0" prefWidth="600.0" />
+                                    <HBox accessibleRole="COMBO_BOX" prefHeight="202.0" prefWidth="600.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -150,14 +143,17 @@
                      <content>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <HBox prefHeight="449.0" prefWidth="800.0">
+                              <HBox prefHeight="512.0" prefWidth="800.0">
                                  <children>
-                                    <TableView prefHeight="449.0" prefWidth="247.0">
+                                    <TableView fx:id="dataTable" prefHeight="466.0" prefWidth="247.0">
                                       <columns>
-                                        <TableColumn prefWidth="84.0" text="Name" />
-                                        <TableColumn prefWidth="81.0" text="Hex" />
-                                          <TableColumn prefWidth="81.0" text="Dec" />
+                                        <TableColumn fx:id="name" prefWidth="84.0" text="Name" />
+                                        <TableColumn fx:id="hex" prefWidth="81.0" text="Hex" />
+                                        <TableColumn fx:id="dec" prefWidth="81.0" text="Dec" />
                                       </columns>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
                                     </TableView>
                                  </children>
                               </HBox>

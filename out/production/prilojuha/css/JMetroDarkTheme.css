@@ -22,6 +22,25 @@
     -fx-text-fill: white;
     -fx-opacity: 0.6;
 }
+
+.chart-bar{
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+/*******************************************************************************
+ *                                                                             *
+ * ChoiceBox                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+ .choice-box{
+    -fx-background-color: linear-gradient(#008287 0%, #219297 100%);
+ }
+
+ .choice-box .label {
+     -fx-text-fill: white;
+     -fx-font-size: 11pt;
+ }
+
 /*******************************************************************************
  *                                                                             *
  * TabPane                                                                     *
@@ -29,7 +48,7 @@
  ******************************************************************************/
 
  .tabPane{
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: linear-gradient(#1d1d1d 0%, #404040 100%);
  }
 
  .tabPane .tab-header-background {
@@ -37,12 +56,12 @@
  }
 
  .tabPane .tab {
-    -fx-background-color: #47484a;
+    -fx-background-color: #474849;
     -fx-background-radius: 2;
  }
 
  .tabPane .tab:selected {
-     -fx-background-color: #008782;
+     -fx-background-color: linear-gradient(#008287 0%, #219297 100%);
      -fx-focus-color: transparent;
  }
 
@@ -121,7 +140,7 @@
 
 .button:default
 {
-    -fx-background-color: #008287;
+    -fx-background-color: linear-gradient(#008287 0%, #219297 100%);
     -fx-text-fill: #ffffff;
 }
 
@@ -142,7 +161,7 @@
 
     -fx-background-radius: 0;
 
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: linear-gradient(#008287 0%, #219297 100%);
 
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
@@ -159,23 +178,19 @@
 }
 
 .toggle-button:hover {
-    -fx-text-fill: #d8d8d8;
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #219297;
 }
 
 .toggle-button:selected {
-    -fx-background-color: #008287;
+    -fx-background-color: #1d1d1d;
     -fx-text-fill: #ffffff;
 }
 
 .toggle-button:selected:hover {
-    -fx-background-color: #219297;
+    -fx-background-color: #47484a;
     -fx-text-fill: #ffffff;
 
     -fx-border-color: #eee;
-}
-.toggle-button:disabled {
-    -fx-opacity: -fx-disabled-opacity;
 }
 
 /*******************************************************************************
@@ -709,3 +724,97 @@
 .list-spinner:disabled {
     -fx-opacity: .4;
 }
+
+/*******************************************************************************
+ *                                                                             *
+ * TableView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.table-view{
+   -fx-background-color: linear-gradient(#1d1d1d 0%, #474849 100%);
+   -fx-border-color: #008287;
+   -fx-border-width: 1;
+}
+
+.table-view:focused{
+    -fx-background-color: linear-gradient(#1d1d1d 0%, #474849 100%);;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#008287 0%, #219297 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-background-color: linear-gradient(#1d1d1d 50%, #404040 100%);
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-border-color: #008287;
+    -fx-table-cell-border-color:#008287;
+}
+
+    /*-fx-background-color: -fx-table-cell-border-color, #008287;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #219297;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}*/
+
+.table-row-cell:selected {
+    -fx-background-color: #219297;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical > .thumb,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .thumb{
+    -fx-background-color: linear-gradient(#008287 0%, #00ced1 100%);
+    -fx-background-radius: 1em;
+}
+
+/*.bar-chart {
+     -fx-background-color: linear-gradient(#1d1d1d 0%, #474849 100%);
+}*/
+
+.bar-chart > .axis > .label{
+    -fx-text-fill: #008287;
+}
+
+.bar-chart > .axis > .tick > .mark {
+    -fx-stroke: #008287;
+    -fx-stroke-width: 3;
+}
+.bar-chart > .axis > .minor > .tick > .mark {
+    -fx-stroke: #008287;
+}
+
+
